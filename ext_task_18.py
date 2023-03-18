@@ -9,3 +9,32 @@
     6
     -> 5
 """
+
+
+def get_array():
+    count_number = int(input('Введите размер массива: '))
+    numbers = []
+    for i in range(count_number):
+        numbers.append(int(input(f'Введите элемент массива № {i + 1}: ')))
+
+    return numbers
+
+
+def get_min_diff_number(n, exp_list):
+    min_different = abs(n - exp_list[0])
+    min_different_number = exp_list[0]
+    for item in exp_list:
+        if min_different > abs(n - item):
+            min_different = abs(n - item)
+            min_different_number = item
+
+    return min_different_number
+
+
+try:
+    numbers = get_array()
+    n = int(input('Введите искомое число: '))
+except ValueError:
+    print('Введено не число!')
+else:
+    print(f'Самый близкий элемент к искомому: {get_min_diff_number(n, numbers)}')
